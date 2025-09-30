@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class APCSA_StringMethodsReview {
+public class StringMethods {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         
