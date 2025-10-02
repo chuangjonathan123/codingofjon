@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class StringMethods {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        
+        // (apcsa) project
         System.out.println("Enter string1:");
         String string1 = scan.nextLine();
         System.out.println("Enter string2:");
