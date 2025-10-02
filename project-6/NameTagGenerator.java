@@ -16,12 +16,7 @@ public class NameTagGenerator
     }
     
     
-    /* Takes in a person's name and then 
-    * prints a nametag, which includes the following:
-    * Name
-    * Number of characters in the name
-    * Last letter in the name
-    */
+  
     public static void displayNameTag(String name)
     {
         System.out.println("****************");
