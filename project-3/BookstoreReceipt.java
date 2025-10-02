@@ -13,7 +13,6 @@ public class BookstoreReceipt
         thankYouMessage = message; 
     }
     
-    //Complete this method that returns a String of the receipt information
     public String getReceipt()
     {
         String build = "Customer Name: " + customerName;
