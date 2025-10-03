@@ -4,6 +4,7 @@ public class WordGameRunner
 {
     public static void main(String[] args)
     {
+        // fun game i coded in apcsa, splitting up words through index of. 
         Scanner input = new Scanner(System.in);
         
         System.out.println("Enter a word: ");
