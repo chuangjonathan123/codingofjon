@@ -3,16 +3,18 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+import edu.wpi.first.wpilibj.Joystick;
 
 public class Robot extends TimedRobot {
-    private PWMSparkMax leftMotor = new PWMSparkMax(0);
-    private PWMSparkMax rightMotor = new PWMSparkMax(1);
-
+    private PWMSparkMax leftDriveMotor = new PWMSparkMax(0);
+    private PWMSparkMax rightDriveMotor = new PWMSparkMax(1);
     private Timer timer = new Timer();
+
+    private Joystick joystick = new Joystick(0); // Make sure you actually have this plugged in
 
     @Override
     public void robotInit() {
-        rightMotor.setInverted(true);
+        rightDriveMotor.setInverted(true);
     }
 
     @Override
@@ -23,23 +25,39 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousPeriodic() {
-        if (timer.get() < 2.0) {
-            leftMotor.set(0.5);
-            rightMotor.set(0.5);
-        } else {
-            leftMotor.set(0.0);
-            rightMotor.set(0.0);
+        double time = timer.get();
+
+        // Drive forward for 2 seconds
+        if (time < 2.0) {
+            leftDriveMotor.set(0.5);
+            rightDriveMotor.set(0.5);
+        } 
+        // Turn right for 1 second
+        else if (time < 3.0) {
+            leftDriveMotor.set(0.5);
+            rightDriveMotor.set(-0.5);
+        }
+        // Drive backward for 2 seconds
+        else if (time < 5.0) {
+            leftDriveMotor.set(-0.5);
+            rightDriveMotor.set(-0.5);
+        } 
+        // Stop
+        else {
+            leftDriveMotor.set(0.0);
+            rightDriveMotor.set(0.0);
         }
     }
 
-   
     @Override
     public void teleopPeriodic() {
-      double forward = joystick.getY();   
-      double turn = joystick.getX();      
-  
-      leftMotor.set(forward + turn);
-      rightMotor.set(forward - turn);
-  }
+        double forward = -joystick.getY(); // usually forward is negative Y
+        double turn = joystick.getX();
 
+        double leftPower = forward + turn;
+        double rightPower = forward - turn;
+
+        leftDriveMotor.set(leftPower);
+        rightDriveMotor.set(rightPower);
+    }
 }
