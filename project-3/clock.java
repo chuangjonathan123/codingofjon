@@ -1,3 +1,5 @@
+// side project, was curious on how to find the angle between the two hands on a clock
+
 import java.util.Scanner;
 
 public class MyProgram {
