@@ -1,2 +1,1 @@
-Projects are liseted in java vs c++. 
-some of them have two classes
+projects are listed, and have additional comments inside. have a good day!
